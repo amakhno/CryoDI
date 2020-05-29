@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C518DDA-28FE-44CA-9AB0-F9773974F13A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CryoAutofac</RootNamespace>
+    <AssemblyName>CryoAutofac</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CircularDependencyException.cs" />
+    <Compile Include="ContainerException.cs" />
+    <Compile Include="ContainerExtensions.cs" />
+    <Compile Include="CryoBehaviour.cs" />
+    <Compile Include="CryoBuilder.cs" />
+    <Compile Include="CryoContainer.cs" />
+    <Compile Include="DependencyAttribute.cs" />
+    <Compile Include="FindComponentHint.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="IBuilder.cs" />
+    <Compile Include="IInitializable.cs" />
+    <Compile Include="ILateInitializable.cs" />
+    <Compile Include="Internal\Builder.cs" />
+    <Compile Include="Internal\BuildUpStack.cs" />
+    <Compile Include="Internal\ContainerKey.cs" />
+    <Compile Include="Internal\DILog.cs" />
+    <Compile Include="Internal\IInternalContainerBuidler.cs" />
+    <Compile Include="Internal\LifeTimeManager.cs" />
+    <Compile Include="Internal\LifeTimeStack.cs" />
+    <Compile Include="Internal\MaskFinder.cs" />
+    <Compile Include="Internal\PrefabInstantiator.cs" />
+    <Compile Include="Internal\Providers\FactoryMethodProvider.cs" />
+    <Compile Include="Internal\Providers\FindObjectProvider.cs" />
+    <Compile Include="Internal\Providers\GetComponentProvider.cs" />
+    <Compile Include="Internal\Providers\InstanceProvider.cs" />
+    <Compile Include="Internal\Providers\ScenePathProvider.cs" />
+    <Compile Include="Internal\Providers\SingletonProvider.cs" />
+    <Compile Include="Internal\Resolver.cs" />
+    <Compile Include="Internal\WeakResolver.cs" />
+    <Compile Include="IObjectProvider.cs" />
+    <Compile Include="IPrefabInstantiator.cs" />
+    <Compile Include="IResolver.cs" />
+    <Compile Include="IWeakResolver.cs" />
+    <Compile Include="LifeTime.cs" />
+    <Compile Include="Param.cs" />
+    <Compile Include="ParamAttribute.cs" />
+    <Compile Include="Reaction.cs" />
+    <Compile Include="Tests\Counters.cs" />
+    <Compile Include="Tests\Editor\TestCrossDependency.cs" />
+    <Compile Include="Tests\Editor\TestFactoryMethods.cs" />
+    <Compile Include="Tests\Editor\TestLifetimeError.cs" />
+    <Compile Include="Tests\Editor\TestNonPublicProperties.cs" />
+    <Compile Include="Tests\Editor\TestParameters.cs" />
+    <Compile Include="Tests\Editor\TestWeakResolve.cs" />
+    <Compile Include="Tests\LifetimeTest.cs" />
+    <Compile Include="Tests\LifetimeTest1.cs" />
+    <Compile Include="Tests\LifeTimeTest2.cs" />
+    <Compile Include="UnityStarter.cs" />
+    <Compile Include="WrongLifetimeException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tests\LifetimeTest1.unity" />
+    <None Include="Tests\LifetimeTest2.unity" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
